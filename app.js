@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require('body-parser');
 var http = require('http');
 
 var indexRouter = require('./routes/index');
@@ -16,7 +15,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev',{}));
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(cookieParser());
@@ -41,13 +39,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// const hostname = "172.30.1.52";
-
-// const server = http.createServer((req,res) => {
-//   res.writeHead(200, { 'Content-Type' : 'text/plain'})
-//   res.end('Hello World\n');
-// });
-app.listen(3000, hostname, () => {
+app.listen(3000,() => {
   console.log("listen in 3000")
 })
 
